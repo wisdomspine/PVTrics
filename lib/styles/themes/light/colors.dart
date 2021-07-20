@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
-const MaterialColor palette = MaterialColor(0xFF585CE5, <int, Color>{
-  100: Color(0xFFF2F6FD),
-  200: Color(0xFFCDCEF7),
+const int primaryColorValue = 0xFF585CE5;
+const MaterialColor palette = MaterialColor(primaryColorValue, <int, Color>{
+  50: Color(0xFFF2F6FD),
+  100: Color(0xFFEBEBFC),
+  200: Color(0xFFACAEF2),
   300: Color(0xFF8A8DED),
   400: Color(0xFF7174E9),
   500: Color(primaryColorValue),
@@ -12,8 +14,6 @@ const MaterialColor palette = MaterialColor(0xFF585CE5, <int, Color>{
   900: Color(0xFF2D30D3),
 });
 
-const int primaryColorValue = 0xFF585CE5;
-final Color accentColor = palette.shade600;
-final Color scaffoldBackgroundColor = palette.shade200;
-final Color bottomNavigationBarColor = Color(0xFFFFFFFF);
-
+final Color? accentColor = palette[600];
+final Color? scaffoldBackgroundColor = palette[200]?.withOpacity(.6);
+final Color? bottomNavigationBarColor = palette[400]?.withOpacity(.7);

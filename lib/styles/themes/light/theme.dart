@@ -1,11 +1,13 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'colors.dart' as colors;
 
 class LightThene {
   static ThemeData theme(BuildContext context) {
-    return ThemeData();
+    final ThemeData mainTheme = _mainThemeData(context);
+    return mainTheme.copyWith();
   }
 
   static ThemeData _mainThemeData(BuildContext context) {
@@ -19,5 +21,5 @@ class LightThene {
     );
   }
 
-  static Color get bottomNavigationBarColor => colors.bottomNavigationBarColor;
+  static Color? get bottomNavigationBarColor => colors.bottomNavigationBarColor;
 }

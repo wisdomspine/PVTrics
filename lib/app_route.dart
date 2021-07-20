@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:vptrics/shared_widgets/stateless/scaffold_background.dart';
 
 import 'modules/public/widgets/stateful/onboard_screen.dart';
 
@@ -23,7 +24,9 @@ class AppRoute {
     Widget Function(BuildContext) builder = (context) => SizedBox();
     switch (routeSettings.name) {
       case OnboardScreen.route:
-        builder = (context) => OnboardScreen();
+        builder = (context) => ScaffoldBackground(
+              child: OnboardScreen(),
+            );
         break;
     }
 

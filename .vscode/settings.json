@@ -1,0 +1,5 @@
+{
+  "editor.formatOnSave": true,
+  "prettier.embeddedLanguageFormatting": "off",
+  "editor.defaultFormatter": "Dart-Code.dart-code"
+}
