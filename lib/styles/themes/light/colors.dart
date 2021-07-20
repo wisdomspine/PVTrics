@@ -17,3 +17,6 @@ const MaterialColor palette = MaterialColor(primaryColorValue, <int, Color>{
 final Color? accentColor = palette[600];
 final Color? scaffoldBackgroundColor = palette[200]?.withOpacity(.6);
 final Color? bottomNavigationBarColor = palette[400]?.withOpacity(.7);
+final Color? cardColor = palette[50];
+final Color? inputFillColor = palette[200];
+final Color? inputHoverFillColor = palette[100];

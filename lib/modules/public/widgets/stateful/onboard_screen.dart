@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vptrics/modules/public/widgets/stateful/login_screen.dart';
 import 'package:vptrics/modules/public/widgets/stateless/onboard_image.dart';
 
 class OnboardScreen extends StatefulWidget {
@@ -57,7 +58,8 @@ class _OnboardScreenState extends State<OnboardScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 40),
               child: ElevatedButton(
                 onPressed: () {
-                  // TODO: Navigate to login screen
+                  // TODO: login
+                  Navigator.pushReplacementNamed(context, LoginScreen.route);
                 },
                 child: Text(
                   "Get Started",
