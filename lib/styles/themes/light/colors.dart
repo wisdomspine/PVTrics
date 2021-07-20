@@ -20,3 +20,4 @@ final Color? bottomNavigationBarColor = palette[400]?.withOpacity(.7);
 final Color? cardColor = palette[50];
 final Color? inputFillColor = palette[200];
 final Color? inputHoverFillColor = palette[100];
+final Color? bottomAppBarColor = palette[50]?.withOpacity(.58);

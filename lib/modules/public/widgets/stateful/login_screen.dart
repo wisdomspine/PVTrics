@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:vptrics/modules/auth/forms/login.form.dart';
+import 'package:vptrics/modules/patients/widgets/stateful/patients_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String route = "LoginScreen";
@@ -96,6 +97,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       ElevatedButton(
                         onPressed: () {
                           // TODO: Login
+                          Navigator.pushReplacementNamed(
+                              context, PatientsScreen.route);
                         },
                         child: Text(
                           "Login",

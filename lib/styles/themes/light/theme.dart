@@ -9,6 +9,8 @@ class LightThene {
     final ThemeData mainTheme = _mainThemeData(context);
     return mainTheme.copyWith(
       inputDecorationTheme: _inputDecorationTheme(mainTheme),
+      appBarTheme: _appBarTheme(mainTheme),
+      bottomAppBarTheme: _bottomAppBarTheme(mainTheme),
     );
   }
 
@@ -53,6 +55,19 @@ class LightThene {
           color: themeData.dividerColor.withOpacity(.15),
         ),
       ),
+    );
+  }
+
+  static AppBarTheme _appBarTheme(ThemeData themeData) {
+    return AppBarTheme(
+      elevation: 0,
+      color: Colors.transparent,
+    );
+  }
+
+  static BottomAppBarTheme _bottomAppBarTheme(ThemeData themeData) {
+    return BottomAppBarTheme(
+      color: colors.bottomAppBarColor,
     );
   }
 }
