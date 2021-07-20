@@ -9,4 +9,5 @@ class AppIcons {
   static const IconData notifications = CupertinoIcons.bell;
   static const IconData settings = CupertinoIcons.gear;
   static const IconData people = CupertinoIcons.person_2;
+  static const IconData attach = Icons.attach_file_outlined;
 }

@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vptrics/shared_widgets/stateless/app_bottom_app_bar.dart';
 import 'package:vptrics/styles/app_icons.dart';
@@ -32,10 +35,235 @@ class _PatientsScreenState extends State<PatientsScreen> {
         ],
       ),
       body: SafeArea(
-        child: Container(),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 16,
+              ),
+              ListTile(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  side: BorderSide(
+                    color: Theme.of(context).dividerColor.withOpacity(.15),
+                  ),
+                ),
+                onTap: () {},
+                tileColor: Theme.of(context).cardColor.withOpacity(.75),
+                leading: CircleAvatar(
+                  radius: 32,
+                  backgroundImage: AssetImage(
+                    "assets/images/default_passport.jpg",
+                  ),
+                ),
+                title: Text("John Doe"),
+                subtitle: Text(
+                  "Male, 25 years",
+                ),
+                trailing: Container(
+                  transform: Matrix4.rotationZ(-pi / 4),
+                  transformAlignment: Alignment.center,
+                  child: Icon(
+                    AppIcons.attach,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              ListTile(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  side: BorderSide(
+                    color: Theme.of(context).dividerColor.withOpacity(.15),
+                  ),
+                ),
+                onTap: () {},
+                tileColor: Theme.of(context).cardColor.withOpacity(.75),
+                leading: CircleAvatar(
+                  radius: 32,
+                  backgroundImage: AssetImage(
+                    "assets/images/default_passport.jpg",
+                  ),
+                ),
+                title: Text("John Doe"),
+                subtitle: Text(
+                  "Male, 25 years",
+                ),
+                trailing: Container(
+                  transform: Matrix4.rotationZ(-pi / 4),
+                  transformAlignment: Alignment.center,
+                  child: Icon(
+                    AppIcons.attach,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              ListTile(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  side: BorderSide(
+                    color: Theme.of(context).dividerColor.withOpacity(.15),
+                  ),
+                ),
+                onTap: () {},
+                tileColor: Theme.of(context).cardColor.withOpacity(.75),
+                leading: CircleAvatar(
+                  radius: 32,
+                  backgroundImage: AssetImage(
+                    "assets/images/default_passport.jpg",
+                  ),
+                ),
+                title: Text("John Doe"),
+                subtitle: Text(
+                  "Male, 25 years",
+                ),
+                trailing: Container(
+                  transform: Matrix4.rotationZ(-pi / 4),
+                  transformAlignment: Alignment.center,
+                  child: Icon(
+                    AppIcons.attach,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              ListTile(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  side: BorderSide(
+                    color: Theme.of(context).dividerColor.withOpacity(.15),
+                  ),
+                ),
+                onTap: () {},
+                tileColor: Theme.of(context).cardColor.withOpacity(.75),
+                leading: CircleAvatar(
+                  radius: 32,
+                  backgroundImage: AssetImage(
+                    "assets/images/default_passport.jpg",
+                  ),
+                ),
+                title: Text("John Doe"),
+                subtitle: Text(
+                  "Male, 25 years",
+                ),
+                trailing: Container(
+                  transform: Matrix4.rotationZ(-pi / 4),
+                  transformAlignment: Alignment.center,
+                  child: Icon(
+                    AppIcons.attach,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              ListTile(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  side: BorderSide(
+                    color: Theme.of(context).dividerColor.withOpacity(.15),
+                  ),
+                ),
+                onTap: () {},
+                tileColor: Theme.of(context).cardColor.withOpacity(.75),
+                leading: CircleAvatar(
+                  radius: 32,
+                  backgroundImage: AssetImage(
+                    "assets/images/default_passport.jpg",
+                  ),
+                ),
+                title: Text("John Doe"),
+                subtitle: Text(
+                  "Male, 25 years",
+                ),
+                trailing: Container(
+                  transform: Matrix4.rotationZ(-pi / 4),
+                  transformAlignment: Alignment.center,
+                  child: Icon(
+                    AppIcons.attach,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              ListTile(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  side: BorderSide(
+                    color: Theme.of(context).dividerColor.withOpacity(.15),
+                  ),
+                ),
+                onTap: () {},
+                tileColor: Theme.of(context).cardColor.withOpacity(.75),
+                leading: CircleAvatar(
+                  radius: 32,
+                  backgroundImage: AssetImage(
+                    "assets/images/default_passport.jpg",
+                  ),
+                ),
+                title: Text("John Doe"),
+                subtitle: Text(
+                  "Male, 25 years",
+                ),
+                trailing: Container(
+                  transform: Matrix4.rotationZ(-pi / 4),
+                  transformAlignment: Alignment.center,
+                  child: Icon(
+                    AppIcons.attach,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              ListTile(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  side: BorderSide(
+                    color: Theme.of(context).dividerColor.withOpacity(.15),
+                  ),
+                ),
+                onTap: () {},
+                tileColor: Theme.of(context).cardColor.withOpacity(.75),
+                leading: CircleAvatar(
+                  radius: 32,
+                  backgroundImage: AssetImage(
+                    "assets/images/default_passport.jpg",
+                  ),
+                ),
+                title: Text("John Doe"),
+                subtitle: Text(
+                  "Male, 25 years",
+                ),
+                trailing: Container(
+                  transform: Matrix4.rotationZ(-pi / 4),
+                  transformAlignment: Alignment.center,
+                  child: Icon(
+                    AppIcons.attach,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
       bottomNavigationBar: AppBottomAppBar(
         activeTab: AppBottomAppBarTab.petients,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // TODO: navigate to create patient screen
+        },
+        child: Text(
+          "New",
+          style: Theme.of(context).accentTextTheme.subtitle1,
+        ),
       ),
     );
   }
