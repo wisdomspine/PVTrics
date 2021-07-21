@@ -10,4 +10,5 @@ class AppIcons {
   static const IconData settings = CupertinoIcons.gear;
   static const IconData people = CupertinoIcons.person_2;
   static const IconData attach = Icons.attach_file_outlined;
+  static const IconData cancel = Icons.cancel;
 }

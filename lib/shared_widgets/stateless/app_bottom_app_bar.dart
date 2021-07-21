@@ -8,7 +8,12 @@ final Object _tabsHeroObject = Object();
 
 class AppBottomAppBar extends StatelessWidget {
   final AppBottomAppBarTab? activeTab;
-  const AppBottomAppBar({Key? key, this.activeTab}) : super(key: key);
+  final void Function(AppBottomAppBarTab) onTap;
+  const AppBottomAppBar({
+    Key? key,
+    this.activeTab,
+    required this.onTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +39,9 @@ class AppBottomAppBar extends StatelessWidget {
   List<Widget> _generateTabs(BuildContext context) {
     final Map<AppBottomAppBarTab, Widget> _tabs = {
       AppBottomAppBarTab.notifications: BottomAppBarTab(
-        onPressed: () {},
+        onPressed: () {
+          this.onTap(AppBottomAppBarTab.notifications);
+        },
         icon: Stack(
           children: [
             Icon(AppIcons.notifications),
@@ -53,11 +60,15 @@ class AppBottomAppBar extends StatelessWidget {
       ),
       AppBottomAppBarTab.petients: BottomAppBarTab(
         icon: Icon(AppIcons.people),
-        onPressed: () {},
+        onPressed: () {
+          this.onTap(AppBottomAppBarTab.petients);
+        },
         active: activeTab == AppBottomAppBarTab.petients,
       ),
       AppBottomAppBarTab.settings: BottomAppBarTab(
-        onPressed: () {},
+        onPressed: () {
+          this.onTap(AppBottomAppBarTab.settings);
+        },
         icon: Icon(AppIcons.settings),
         active: activeTab == AppBottomAppBarTab.settings,
       ),
