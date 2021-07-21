@@ -39,6 +39,9 @@ class _CreatePatientScreenState extends State<CreatePatientScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
+                      SizedBox(
+                        height: 40,
+                      ),
                       CircleAvatar(
                         radius: 56,
                         backgroundColor:
