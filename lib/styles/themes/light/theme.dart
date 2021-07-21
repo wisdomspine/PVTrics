@@ -11,6 +11,7 @@ class LightThene {
       inputDecorationTheme: _inputDecorationTheme(mainTheme),
       appBarTheme: _appBarTheme(mainTheme),
       bottomAppBarTheme: _bottomAppBarTheme(mainTheme),
+      cardTheme: _cardTheme(mainTheme),
     );
   }
 
@@ -77,6 +78,17 @@ class LightThene {
   static BottomAppBarTheme _bottomAppBarTheme(ThemeData themeData) {
     return BottomAppBarTheme(
       color: colors.bottomAppBarColor,
+    );
+  }
+
+  static CardTheme _cardTheme(ThemeData themeData) {
+    return CardTheme(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+        side: BorderSide(
+          color: themeData.dividerColor.withOpacity(.15),
+        ),
+      ),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vptrics/modules/email/widgets/stateful/compose_email_screen.dart';
+import 'package:vptrics/modules/email/widgets/stateful/read_email_screen.dart';
 
 class EmailsScreen extends StatefulWidget {
   static const String route = "EmailsScreen";
@@ -33,7 +34,9 @@ class _EmailsScreenState extends State<EmailsScreen> {
                     color: Theme.of(context).dividerColor.withOpacity(.15),
                   ),
                 ),
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, ReadEmailScreen.route);
+                },
                 tileColor: Theme.of(context).cardColor.withOpacity(.75),
                 leading: CircleAvatar(
                   radius: 32,
