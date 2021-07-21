@@ -7,6 +7,7 @@ import 'package:reactive_date_time_picker/reactive_date_time_picker.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:vptrics/modules/core/enums/gender.enum.dart';
 import 'package:vptrics/modules/patients/forms/patient.form.dart';
+import 'package:vptrics/modules/patients/widgets/stateful/patient_dashboard_screen.dart';
 import 'package:vptrics/styles/app_icons.dart';
 
 class CreatePatientScreen extends StatefulWidget {
@@ -176,6 +177,10 @@ class _CreatePatientScreenState extends State<CreatePatientScreen> {
                       ElevatedButton(
                         onPressed: () {
                           // TODO: Create Patient
+                          Navigator.pushReplacementNamed(
+                            context,
+                            PatientDashboardScreen.route,
+                          );
                         },
                         child: Text(
                           "Done",
@@ -193,6 +198,9 @@ class _CreatePatientScreenState extends State<CreatePatientScreen> {
                           ),
                           padding: EdgeInsets.symmetric(vertical: 12),
                         ),
+                      ),
+                      SizedBox(
+                        height: 32,
                       ),
                     ],
                   ),

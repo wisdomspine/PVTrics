@@ -34,8 +34,8 @@ class LightThene {
           // color: themeData.textTheme.bodyText2?.color?.withOpacity(.5),
           ),
       hintStyle: themeData.textTheme.bodyText2?.copyWith(
-          // color: themeData.textTheme.bodyText2.color.withOpacity(.4),
-          ),
+        color: themeData.textTheme.bodyText2?.color?.withOpacity(.4),
+      ),
       fillColor: colors.inputFillColor?.withOpacity(.3),
       focusColor: colors.inputHoverFillColor?.withOpacity(.15),
       hoverColor: colors.inputHoverFillColor?.withOpacity(.15),

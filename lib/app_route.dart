@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vptrics/modules/patients/widgets/stateful/create_patient_screen.dart';
+import 'package:vptrics/modules/patients/widgets/stateful/patient_dashboard_screen.dart';
 import 'package:vptrics/modules/patients/widgets/stateful/patients_screen.dart';
 import 'package:vptrics/modules/patients/widgets/stateful/patients_search_screen.dart';
 import 'package:vptrics/modules/public/widgets/stateful/login_screen.dart';
@@ -50,6 +51,11 @@ class AppRoute {
       case CreatePatientScreen.route:
         builder = (context) => ScaffoldBackground(
               child: CreatePatientScreen(),
+            );
+        break;
+      case PatientDashboardScreen.route:
+        builder = (context) => ScaffoldBackground(
+              child: PatientDashboardScreen(),
             );
         break;
     }
