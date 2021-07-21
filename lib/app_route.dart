@@ -10,6 +10,7 @@ import 'package:vptrics/modules/patients/widgets/stateful/patient_dashboard_scre
 import 'package:vptrics/modules/patients/widgets/stateful/patients_screen.dart';
 import 'package:vptrics/modules/patients/widgets/stateful/patients_search_screen.dart';
 import 'package:vptrics/modules/public/widgets/stateful/login_screen.dart';
+import 'package:vptrics/modules/sms/widgets/stateful/sms_screen.dart';
 import 'package:vptrics/shared_widgets/stateless/scaffold_background.dart';
 
 import 'modules/public/widgets/stateful/onboard_screen.dart';
@@ -74,6 +75,11 @@ class AppRoute {
       case ReadEmailScreen.route:
         builder = (context) => ScaffoldBackground(
               child: ReadEmailScreen(),
+            );
+        break;
+      case SmsScreen.route:
+        builder = (context) => ScaffoldBackground(
+              child: SmsScreen(),
             );
         break;
     }

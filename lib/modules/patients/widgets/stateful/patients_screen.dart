@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vptrics/modules/patients/widgets/stateful/create_patient_screen.dart';
+import 'package:vptrics/modules/patients/widgets/stateful/patient_dashboard_screen.dart';
 import 'package:vptrics/modules/patients/widgets/stateful/patients_search_screen.dart';
 import 'package:vptrics/shared_widgets/stateless/app_bottom_app_bar.dart';
 import 'package:vptrics/styles/app_icons.dart';
@@ -53,7 +54,12 @@ class _PatientsScreenState extends State<PatientsScreen> {
                     color: Theme.of(context).dividerColor.withOpacity(.15),
                   ),
                 ),
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    PatientDashboardScreen.route,
+                  );
+                },
                 tileColor: Theme.of(context).cardColor.withOpacity(.75),
                 leading: CircleAvatar(
                   radius: 32,

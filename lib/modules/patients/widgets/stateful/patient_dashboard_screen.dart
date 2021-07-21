@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vptrics/modules/email/widgets/stateful/emails_screen.dart';
 import 'package:vptrics/modules/patients/widgets/stateless/patient_dashboard_tab.dart';
+import 'package:vptrics/modules/sms/widgets/stateful/sms_screen.dart';
 import 'package:vptrics/styles/app_icons.dart';
 
 class PatientDashboardScreen extends StatefulWidget {
@@ -47,7 +48,12 @@ class _PatientDashboardScreenState extends State<PatientDashboardScreen> {
                 Center(
                   child: PatientDashboardTab(
                     icon: Icon(AppIcons.chat_bubble_text),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(
+                        context,
+                        SmsScreen.route,
+                      );
+                    },
                     label: "Sms",
                   ),
                 ),

@@ -14,6 +14,7 @@ class AppIcons {
   static const IconData attach = Icons.attach_file_outlined;
   static const IconData cancel = Icons.cancel;
   static const IconData bar_chart = Icons.bar_chart;
+  static const IconData send = Icons.send;
   static const IconData trash = CupertinoIcons.trash;
   static const IconData chat_bubble_text = CupertinoIcons.chat_bubble_text;
   static const IconData info = CupertinoIcons.info;
