@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vptrics/modules/email/widgets/stateful/compose_email_screen.dart';
 import 'package:vptrics/modules/email/widgets/stateful/emails_screen.dart';
+import 'package:vptrics/modules/email/widgets/stateful/read_email_screen.dart';
 import 'package:vptrics/modules/patients/widgets/stateful/create_patient_screen.dart';
 import 'package:vptrics/modules/patients/widgets/stateful/patient_dashboard_screen.dart';
 import 'package:vptrics/modules/patients/widgets/stateful/patients_screen.dart';
@@ -68,6 +69,11 @@ class AppRoute {
       case ComposeEmailScreen.route:
         builder = (context) => ScaffoldBackground(
               child: ComposeEmailScreen(),
+            );
+        break;
+      case ReadEmailScreen.route:
+        builder = (context) => ScaffoldBackground(
+              child: ReadEmailScreen(),
             );
         break;
     }

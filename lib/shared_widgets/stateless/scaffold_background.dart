@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class ScaffoldBackground extends StatelessWidget {
@@ -17,7 +19,13 @@ class ScaffoldBackground extends StatelessWidget {
           alignment: Alignment.topLeft,
         ),
       ),
-      child: child,
+      child: new BackdropFilter(
+        filter: ImageFilter.blur(
+          sigmaX: 1.0,
+          sigmaY: -2.0,
+        ),
+        child: child,
+      ),
     );
   }
 }
