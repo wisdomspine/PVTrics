@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:vptrics/modules/patients/widgets/stateful/create_patient_screen.dart';
 import 'package:vptrics/modules/patients/widgets/stateful/patient_dashboard_screen.dart';
 import 'package:vptrics/modules/patients/widgets/stateful/patients_search_screen.dart';
+import 'package:vptrics/modules/settings/widgets/stateful/settings_screen.dart';
 import 'package:vptrics/shared_widgets/stateless/app_bottom_app_bar.dart';
 import 'package:vptrics/styles/app_icons.dart';
 
@@ -264,8 +265,15 @@ class _PatientsScreenState extends State<PatientsScreen> {
         ),
       ),
       bottomNavigationBar: AppBottomAppBar(
-        onTap: (tab) => {},
-        activeTab: AppBottomAppBarTab.petients,
+        onTap: (tab) {
+          switch (tab) {
+            case AppBottomAppBarTab.settings:
+              Navigator.pushReplacementNamed(context, SettingsScreen.route);
+              break;
+            default:
+          }
+        },
+        activeTab: AppBottomAppBarTab.patients,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

@@ -58,12 +58,12 @@ class AppBottomAppBar extends StatelessWidget {
         ),
         active: activeTab == AppBottomAppBarTab.notifications,
       ),
-      AppBottomAppBarTab.petients: BottomAppBarTab(
+      AppBottomAppBarTab.patients: BottomAppBarTab(
         icon: Icon(AppIcons.people),
         onPressed: () {
-          this.onTap(AppBottomAppBarTab.petients);
+          this.onTap(AppBottomAppBarTab.patients);
         },
-        active: activeTab == AppBottomAppBarTab.petients,
+        active: activeTab == AppBottomAppBarTab.patients,
       ),
       AppBottomAppBarTab.settings: BottomAppBarTab(
         onPressed: () {
@@ -84,6 +84,6 @@ class AppBottomAppBar extends StatelessWidget {
 
 enum AppBottomAppBarTab {
   notifications,
-  petients,
+  patients,
   settings,
 }

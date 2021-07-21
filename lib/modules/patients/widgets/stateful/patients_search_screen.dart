@@ -276,7 +276,7 @@ class _PatientsSearchScreen extends State<PatientsSearchScreen> {
         ),
       ),
       bottomNavigationBar: AppBottomAppBar(
-        activeTab: AppBottomAppBarTab.petients,
+        activeTab: AppBottomAppBarTab.patients,
         onTap: (tab) => {
           if (tab == AppBottomAppBarTab.notifications)
             {}
