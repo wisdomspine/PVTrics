@@ -26,6 +26,8 @@ dependencies:
   get_it: ^7.2.0
   adobe_xd: ^2.0.0+1
   reactive_forms: ^10.5.0
+  image_picker: ^0.8.2
+  reactive_date_time_picker: ^0.1.4
 
 dev_dependencies:
   flutter_test:

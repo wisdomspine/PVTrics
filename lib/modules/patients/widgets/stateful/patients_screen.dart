@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:vptrics/modules/patients/widgets/stateful/create_patient_screen.dart';
 import 'package:vptrics/modules/patients/widgets/stateful/patients_search_screen.dart';
 import 'package:vptrics/shared_widgets/stateless/app_bottom_app_bar.dart';
 import 'package:vptrics/styles/app_icons.dart';
@@ -262,7 +263,7 @@ class _PatientsScreenState extends State<PatientsScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // TODO: navigate to create patient screen
+          Navigator.pushNamed(context, CreatePatientScreen.route);
         },
         child: Text(
           "New",

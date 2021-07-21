@@ -41,16 +41,19 @@ class LightThene {
       hoverColor: colors.inputHoverFillColor?.withOpacity(.15),
       filled: true,
       enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
         borderSide: BorderSide(
           color: themeData.dividerColor.withOpacity(.15),
         ),
       ),
       focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
         borderSide: BorderSide(
           color: themeData.dividerColor.withOpacity(.15),
         ),
       ),
       border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
         borderSide: BorderSide(
           color: themeData.dividerColor.withOpacity(.15),
         ),
@@ -62,6 +65,12 @@ class LightThene {
     return AppBarTheme(
       elevation: 0,
       color: Colors.transparent,
+      iconTheme: IconThemeData(color: themeData.iconTheme.color),
+      textTheme: themeData.textTheme.copyWith(
+        headline6: themeData.textTheme.headline6?.copyWith(
+          fontSize: 20,
+        ),
+      ),
     );
   }
 
