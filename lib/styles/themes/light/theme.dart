@@ -12,6 +12,7 @@ class LightThene {
       appBarTheme: _appBarTheme(mainTheme),
       bottomAppBarTheme: _bottomAppBarTheme(mainTheme),
       cardTheme: _cardTheme(mainTheme),
+      timePickerTheme: _timePickerThemeData(mainTheme),
     );
   }
 
@@ -90,5 +91,9 @@ class LightThene {
         ),
       ),
     );
+  }
+
+  static TimePickerThemeData _timePickerThemeData(ThemeData themeData) {
+    return TimePickerThemeData();
   }
 }

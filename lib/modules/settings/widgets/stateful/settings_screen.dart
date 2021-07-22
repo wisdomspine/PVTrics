@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vptrics/modules/notifications/widgets/stateful/notifications_screen.dart';
 import 'package:vptrics/modules/patients/widgets/stateful/patients_screen.dart';
 import 'package:vptrics/shared_widgets/stateless/app_bottom_app_bar.dart';
 
@@ -92,6 +93,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
               Navigator.pushReplacementNamed(
                 context,
                 PatientsScreen.route,
+              );
+              break;
+            case AppBottomAppBarTab.notifications:
+              Navigator.pushReplacementNamed(
+                context,
+                NotificationsScreen.route,
               );
               break;
             default:

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:vptrics/modules/data/widgets/stateless/data_screen.dart';
 import 'package:vptrics/modules/email/widgets/stateful/emails_screen.dart';
 import 'package:vptrics/modules/patients/widgets/stateless/patient_dashboard_tab.dart';
 import 'package:vptrics/modules/sms/widgets/stateful/sms_screen.dart';
@@ -85,7 +86,12 @@ class _PatientDashboardScreenState extends State<PatientDashboardScreen> {
                 Center(
                   child: PatientDashboardTab(
                     icon: Icon(AppIcons.bar_chart),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(
+                        context,
+                        DataScreen.route,
+                      );
+                    },
                     label: "Data",
                   ),
                 ),

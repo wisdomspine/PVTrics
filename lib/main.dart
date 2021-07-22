@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get_it_mixin/get_it_mixin.dart';
 import 'package:vptrics/app_route.dart';
 import 'package:vptrics/loader.dart';
+import 'package:vptrics/styles/styles.dart';
 import 'package:vptrics/styles/widgets/app_input_decoration.dart';
 import './styles/themes/light/theme.dart' as light_theme;
 import './styles/typography.dart' as typography;
@@ -16,7 +17,7 @@ void main() {
       systemNavigationBarIconBrightness: Brightness.light,
     ),
   );
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then(
+  SystemChrome.setPreferredOrientations(preferredOrientations).then(
     (value) async => runApp(
       MyApp(),
     ),

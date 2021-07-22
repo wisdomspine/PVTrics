@@ -1,45 +1,29 @@
-import 'dart:math';
+import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:vptrics/modules/notifications/widgets/stateful/notifications_screen.dart';
-import 'package:vptrics/modules/patients/widgets/stateful/create_patient_screen.dart';
-import 'package:vptrics/modules/patients/widgets/stateful/patient_dashboard_screen.dart';
-import 'package:vptrics/modules/patients/widgets/stateful/patients_search_screen.dart';
+import 'package:vptrics/modules/patients/widgets/stateful/patients_screen.dart';
 import 'package:vptrics/modules/settings/widgets/stateful/settings_screen.dart';
 import 'package:vptrics/shared_widgets/stateless/app_bottom_app_bar.dart';
-import 'package:vptrics/styles/app_icons.dart';
 
-class PatientsScreen extends StatefulWidget {
-  static const String route = "PatientsScreen";
-  const PatientsScreen({Key? key}) : super(key: key);
+class NotificationsScreen extends StatefulWidget {
+  static const String route = "NotificationsScreen";
+  const NotificationsScreen({Key? key}) : super(key: key);
 
   @override
-  _PatientsScreenState createState() => _PatientsScreenState();
+  _NotificationsScreenState createState() => _NotificationsScreenState();
 }
 
-class _PatientsScreenState extends State<PatientsScreen> {
+class _NotificationsScreenState extends State<NotificationsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Patients",
+          "Notifications",
           style: Theme.of(context).textTheme.headline5?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
         ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.pushNamed(context, PatientsSearchScreen.route);
-            },
-            icon: Icon(
-              AppIcons.search,
-              color: Theme.of(context).iconTheme.color,
-            ),
-          ),
-        ],
       ),
       body: SafeArea(
         child: Padding(
@@ -57,10 +41,7 @@ class _PatientsScreenState extends State<PatientsScreen> {
                   ),
                 ),
                 onTap: () {
-                  Navigator.pushNamed(
-                    context,
-                    PatientDashboardScreen.route,
-                  );
+                  // TODO: mark notification as read and move to show data
                 },
                 tileColor: Theme.of(context).cardColor.withOpacity(.75),
                 leading: CircleAvatar(
@@ -70,14 +51,13 @@ class _PatientsScreenState extends State<PatientsScreen> {
                   ),
                 ),
                 title: Text("John Doe"),
-                subtitle: Text(
-                  "Male, 25 years",
+                trailing: Text(
+                  "Jun 12",
                 ),
-                trailing: Container(
-                  transform: Matrix4.rotationZ(-pi / 4),
-                  transformAlignment: Alignment.center,
-                  child: Icon(
-                    AppIcons.attach,
+                subtitle: Text(
+                  "25°F  :  256 bpm  : 200un ",
+                  style: TextStyle(
+                    color: Theme.of(context).accentColor,
                   ),
                 ),
               ),
@@ -100,14 +80,13 @@ class _PatientsScreenState extends State<PatientsScreen> {
                   ),
                 ),
                 title: Text("John Doe"),
-                subtitle: Text(
-                  "Male, 25 years",
+                trailing: Text(
+                  "Jun 12",
                 ),
-                trailing: Container(
-                  transform: Matrix4.rotationZ(-pi / 4),
-                  transformAlignment: Alignment.center,
-                  child: Icon(
-                    AppIcons.attach,
+                subtitle: Text(
+                  "25°F  :  256 bpm  : 200un ",
+                  style: TextStyle(
+                    color: Theme.of(context).accentColor,
                   ),
                 ),
               ),
@@ -130,14 +109,13 @@ class _PatientsScreenState extends State<PatientsScreen> {
                   ),
                 ),
                 title: Text("John Doe"),
-                subtitle: Text(
-                  "Male, 25 years",
+                trailing: Text(
+                  "Jun 12",
                 ),
-                trailing: Container(
-                  transform: Matrix4.rotationZ(-pi / 4),
-                  transformAlignment: Alignment.center,
-                  child: Icon(
-                    AppIcons.attach,
+                subtitle: Text(
+                  "25°F  :  256 bpm  : 200un ",
+                  style: TextStyle(
+                    color: Theme.of(context).accentColor,
                   ),
                 ),
               ),
@@ -160,14 +138,13 @@ class _PatientsScreenState extends State<PatientsScreen> {
                   ),
                 ),
                 title: Text("John Doe"),
-                subtitle: Text(
-                  "Male, 25 years",
+                trailing: Text(
+                  "Jun 12",
                 ),
-                trailing: Container(
-                  transform: Matrix4.rotationZ(-pi / 4),
-                  transformAlignment: Alignment.center,
-                  child: Icon(
-                    AppIcons.attach,
+                subtitle: Text(
+                  "25°F  :  256 bpm  : 200un ",
+                  style: TextStyle(
+                    color: Theme.of(context).accentColor,
                   ),
                 ),
               ),
@@ -190,14 +167,13 @@ class _PatientsScreenState extends State<PatientsScreen> {
                   ),
                 ),
                 title: Text("John Doe"),
-                subtitle: Text(
-                  "Male, 25 years",
+                trailing: Text(
+                  "Jun 12",
                 ),
-                trailing: Container(
-                  transform: Matrix4.rotationZ(-pi / 4),
-                  transformAlignment: Alignment.center,
-                  child: Icon(
-                    AppIcons.attach,
+                subtitle: Text(
+                  "25°F  :  256 bpm  : 200un ",
+                  style: TextStyle(
+                    color: Theme.of(context).accentColor,
                   ),
                 ),
               ),
@@ -220,14 +196,13 @@ class _PatientsScreenState extends State<PatientsScreen> {
                   ),
                 ),
                 title: Text("John Doe"),
-                subtitle: Text(
-                  "Male, 25 years",
+                trailing: Text(
+                  "Jun 12",
                 ),
-                trailing: Container(
-                  transform: Matrix4.rotationZ(-pi / 4),
-                  transformAlignment: Alignment.center,
-                  child: Icon(
-                    AppIcons.attach,
+                subtitle: Text(
+                  "25°F  :  256 bpm  : 200un ",
+                  style: TextStyle(
+                    color: Theme.of(context).accentColor,
                   ),
                 ),
               ),
@@ -250,14 +225,13 @@ class _PatientsScreenState extends State<PatientsScreen> {
                   ),
                 ),
                 title: Text("John Doe"),
-                subtitle: Text(
-                  "Male, 25 years",
+                trailing: Text(
+                  "Jun 12",
                 ),
-                trailing: Container(
-                  transform: Matrix4.rotationZ(-pi / 4),
-                  transformAlignment: Alignment.center,
-                  child: Icon(
-                    AppIcons.attach,
+                subtitle: Text(
+                  "25°F  :  256 bpm  : 200un ",
+                  style: TextStyle(
+                    color: Theme.of(context).accentColor,
                   ),
                 ),
               ),
@@ -274,25 +248,16 @@ class _PatientsScreenState extends State<PatientsScreen> {
                 SettingsScreen.route,
               );
               break;
-            case AppBottomAppBarTab.notifications:
+            case AppBottomAppBarTab.patients:
               Navigator.pushReplacementNamed(
                 context,
-                NotificationsScreen.route,
+                PatientsScreen.route,
               );
               break;
             default:
           }
         },
-        activeTab: AppBottomAppBarTab.patients,
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushNamed(context, CreatePatientScreen.route);
-        },
-        child: Text(
-          "New",
-          style: Theme.of(context).accentTextTheme.subtitle1,
-        ),
+        activeTab: AppBottomAppBarTab.notifications,
       ),
     );
   }
