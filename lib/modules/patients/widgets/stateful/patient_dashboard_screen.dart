@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:vptrics/modules/core/app_dialogs.dart';
 import 'package:vptrics/modules/data/widgets/stateless/data_screen.dart';
+import 'package:vptrics/modules/devices/devices_dialogs.dart';
 import 'package:vptrics/modules/email/widgets/stateful/emails_screen.dart';
+import 'package:vptrics/modules/patients/patients_dialogs.dart';
 import 'package:vptrics/modules/patients/widgets/stateless/patient_dashboard_tab.dart';
 import 'package:vptrics/modules/sms/widgets/stateful/sms_screen.dart';
 import 'package:vptrics/styles/app_icons.dart';
@@ -62,17 +65,24 @@ class _PatientDashboardScreenState extends State<PatientDashboardScreen> {
                 Center(
                   child: PatientDashboardTab(
                     icon: Icon(AppIcons.info),
-                    onPressed: () {},
+                    onPressed: () {
+                      PatientsDialog.showPatientInfo(context);
+                    },
                     label: "Details",
                   ),
                 ),
               ],
             ),
-            Center(
-              child: CircleAvatar(
-                radius: 56,
-                backgroundImage: AssetImage(
-                  "assets/images/default_passport.jpg",
+            InkWell(
+              onTap: () {
+                PatientsDialog.showPatientInfo(context);
+              },
+              child: Center(
+                child: CircleAvatar(
+                  radius: 56,
+                  backgroundImage: AssetImage(
+                    "assets/images/default_passport.jpg",
+                  ),
                 ),
               ),
             ),
@@ -102,7 +112,19 @@ class _PatientDashboardScreenState extends State<PatientDashboardScreen> {
                       AppIcons.trash,
                       color: Theme.of(context).errorColor,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      AppDialogs.confirm(
+                        context,
+                        message:
+                            "Plase, confirm you want to delete all patient records",
+                        acceptText: "Delete",
+                        acceptTextColor: Theme.of(context).errorColor,
+                      ).then((value) {
+                        if (value ?? false) {
+                          // TODO: delete patient
+                        }
+                      });
+                    },
                     label: "Delete",
                   ),
                 ),
@@ -110,7 +132,9 @@ class _PatientDashboardScreenState extends State<PatientDashboardScreen> {
                 Center(
                   child: PatientDashboardTab(
                     icon: Icon(AppIcons.attach),
-                    onPressed: () {},
+                    onPressed: () {
+                      DevicesDialog.showDevices(context);
+                    },
                     label: "Attach to device",
                   ),
                 ),

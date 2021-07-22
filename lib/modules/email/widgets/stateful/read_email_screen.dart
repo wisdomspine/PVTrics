@@ -47,11 +47,11 @@ class _ReadEmailScreenState extends State<ReadEmailScreen> {
                 ),
                 RichText(
                   text: TextSpan(
-                    text: "Priest Sabo Ombugadu <",
+                    text: "Okwute Thankgod <",
                     style: Theme.of(context).textTheme.subtitle1,
                     children: [
                       TextSpan(
-                        text: "sabopriest@gmail.com",
+                        text: "okwute@gmail.com",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),

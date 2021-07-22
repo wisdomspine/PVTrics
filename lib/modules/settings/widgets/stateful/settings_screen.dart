@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:vptrics/modules/core/app_dialogs.dart';
 import 'package:vptrics/modules/notifications/widgets/stateful/notifications_screen.dart';
 import 'package:vptrics/modules/patients/widgets/stateful/patients_screen.dart';
+import 'package:vptrics/modules/public/widgets/stateful/login_screen.dart';
 import 'package:vptrics/shared_widgets/stateless/app_bottom_app_bar.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -14,6 +16,11 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
+    final Divider divider = Divider(
+      color: Theme.of(context).cardColor,
+      thickness: 1,
+      height: 1,
+    );
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -47,7 +54,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     title: Text(
                       "Devices",
                       style: Theme.of(context).textTheme.subtitle1?.copyWith(
-                            fontWeight: FontWeight.bold,
+                          // fontWeight: FontWeight.bold,
                           ),
                     ),
                     trailing: Text(
@@ -57,26 +64,31 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ),
                     ),
                   ),
-                  Divider(
-                    color: Theme.of(context).cardColor,
-                    thickness: 1,
-                  ),
+                  divider,
                   ListTile(
                     onTap: () {
-                      // TOD: logout
+                      AppDialogs.confirm(
+                        context,
+                        message: "Please, confirm you want to logout",
+                        acceptText: "Logout",
+                        acceptTextColor: Theme.of(context).errorColor,
+                      ).then((value) {
+                        if (value ?? false) {
+                          // TODO: logout
+                          Navigator.pushNamedAndRemoveUntil(
+                              context, LoginScreen.route, (route) => false);
+                        }
+                      });
                     },
                     title: Text(
                       "Logout",
                       style: Theme.of(context).textTheme.subtitle1?.copyWith(
-                            fontWeight: FontWeight.bold,
+                            // fontWeight: FontWeight.bold,
                             color: Theme.of(context).errorColor,
                           ),
                     ),
                   ),
-                  Divider(
-                    color: Theme.of(context).cardColor,
-                    thickness: 1,
-                  ),
+                  divider,
                   SizedBox(
                     height: 32,
                   ),

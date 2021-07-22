@@ -31,7 +31,7 @@ class _ComposeEmailScreenState extends State<ComposeEmailScreen> {
               ),
               TextFormField(
                 decoration: InputDecoration(
-                  hintText: "Email: sabopriest@gmail.com",
+                  hintText: "Email: okwute@gmail.com",
                 ),
                 enabled: false,
               ),

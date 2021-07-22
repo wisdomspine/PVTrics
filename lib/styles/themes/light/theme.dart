@@ -13,6 +13,7 @@ class LightThene {
       bottomAppBarTheme: _bottomAppBarTheme(mainTheme),
       cardTheme: _cardTheme(mainTheme),
       timePickerTheme: _timePickerThemeData(mainTheme),
+      dialogTheme: _dialogTheme(mainTheme),
     );
   }
 
@@ -90,6 +91,16 @@ class LightThene {
           color: themeData.dividerColor.withOpacity(.15),
         ),
       ),
+    );
+  }
+
+  static DialogTheme _dialogTheme(ThemeData themeData) {
+    return DialogTheme(
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      backgroundColor: colors.cardColor?.withOpacity(.7),
     );
   }
 
