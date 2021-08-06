@@ -1,4 +1,4 @@
-package com.example.vptrics
+package com.vptrics.mobile
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "685269003542",
+    "project_id": "vptrics",
+    "storage_bucket": "vptrics.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:685269003542:android:f5dd998bbdf371b5c67437",
+        "android_client_info": {
+          "package_name": "com.vptrics.mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "685269003542-frnlllcs8ou06k98ckfs0vt7purau22v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vptrics.mobile",
+            "certificate_hash": "0bcf9037a79eab0a07e4dd0b5a15e8bc75e3ba54"
+          }
+        },
+        {
+          "client_id": "685269003542-l9mv91g9307ea7n4oq7eqg0sf1lkqhs9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAO9LupaYEEpo8TpbMw89FQCC0l0zx5z7U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "685269003542-l9mv91g9307ea7n4oq7eqg0sf1lkqhs9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
