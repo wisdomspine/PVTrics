@@ -1,7 +1,9 @@
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:vptrics/modules/data/widgets/stateless/data_screen.dart';
 import 'package:vptrics/modules/email/widgets/stateful/compose_email_screen.dart';
 import 'package:vptrics/modules/email/widgets/stateful/emails_screen.dart';
@@ -9,14 +11,16 @@ import 'package:vptrics/modules/email/widgets/stateful/read_email_screen.dart';
 import 'package:vptrics/modules/notifications/widgets/stateful/notifications_screen.dart';
 import 'package:vptrics/modules/patients/widgets/stateful/create_patient_screen.dart';
 import 'package:vptrics/modules/patients/widgets/stateful/patient_dashboard_screen.dart';
-import 'package:vptrics/modules/patients/widgets/stateful/patients_screen.dart';
+import 'package:vptrics/modules/patients/widgets/stateless/patients_screen.dart';
 import 'package:vptrics/modules/patients/widgets/stateful/patients_search_screen.dart';
-import 'package:vptrics/modules/public/widgets/stateful/login_screen.dart';
-import 'package:vptrics/modules/settings/widgets/stateful/settings_screen.dart';
+import 'package:vptrics/modules/auth/widgets/stateful/login_screen.dart';
+import 'package:vptrics/modules/settings/widgets/stateless/settings_screen.dart';
 import 'package:vptrics/modules/sms/widgets/stateful/sms_screen.dart';
+import 'package:vptrics/shared_widgets/stateless/app_launch_scree.dart';
 import 'package:vptrics/shared_widgets/stateless/scaffold_background.dart';
 
-import 'modules/public/widgets/stateful/onboard_screen.dart';
+import 'modules/core/services/app_info.service.dart';
+import 'modules/onboard/widgets/stateful/onboard_screen.dart';
 
 class AppRoute {
   Route<dynamic> Function(RouteSettings) get onGenerateRoute {
@@ -27,9 +31,14 @@ class AppRoute {
     };
   }
 
-  String? get initialRoute {
-    // TODO: retun initial page
-    return OnboardScreen.route;
+  Future<String> get initialRoute async {
+    if (await GetIt.instance<AppInfoService>().isFirstLaunch) {
+      return OnboardScreen.route;
+    } else if (GetIt.I.get<FirebaseAuth>().currentUser != null) {
+      return PatientsScreen.route;
+    } else {
+      return LoginScreen.route;
+    }
   }
 
   Widget Function(BuildContext) _getBuilder(RouteSettings routeSettings) {
@@ -57,12 +66,18 @@ class AppRoute {
         break;
       case CreatePatientScreen.route:
         builder = (context) => ScaffoldBackground(
-              child: CreatePatientScreen(),
+              child: (routeSettings.arguments is CreatePatientScreenData)
+                  ? CreatePatientScreen(
+                      data: routeSettings.arguments as CreatePatientScreenData,
+                    )
+                  : CreatePatientScreen(),
             );
         break;
       case PatientDashboardScreen.route:
         builder = (context) => ScaffoldBackground(
-              child: PatientDashboardScreen(),
+              child: PatientDashboardScreen(
+                data: routeSettings.arguments as PatientDashboardScreenData,
+              ),
             );
         break;
       case EmailsScreen.route:
@@ -98,6 +113,11 @@ class AppRoute {
       case DataScreen.route:
         builder = (context) => ScaffoldBackground(
               child: DataScreen(),
+            );
+        break;
+      case AppLaunchScreen.route:
+        builder = (context) => ScaffoldBackground(
+              child: AppLaunchScreen(),
             );
         break;
     }

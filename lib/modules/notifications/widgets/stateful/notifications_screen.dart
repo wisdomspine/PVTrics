@@ -1,8 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:vptrics/modules/patients/widgets/stateful/patients_screen.dart';
-import 'package:vptrics/modules/settings/widgets/stateful/settings_screen.dart';
+import 'package:vptrics/modules/patients/widgets/stateless/patients_screen.dart';
+import 'package:vptrics/modules/settings/widgets/stateless/settings_screen.dart';
 import 'package:vptrics/shared_widgets/stateless/app_bottom_app_bar.dart';
 
 class NotificationsScreen extends StatefulWidget {

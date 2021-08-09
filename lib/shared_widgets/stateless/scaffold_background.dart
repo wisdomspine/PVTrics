@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class ScaffoldBackground extends StatelessWidget {
   final Widget? child;
-  const ScaffoldBackground({
+  ScaffoldBackground({
     Key? key,
     this.child,
   }) : super(key: key);
@@ -24,6 +24,7 @@ class ScaffoldBackground extends StatelessWidget {
           sigmaX: 1.0,
           sigmaY: -2.0,
         ),
+        // child: child,
         child: child,
       ),
     );

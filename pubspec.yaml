@@ -30,6 +30,12 @@ dependencies:
   reactive_date_time_picker: ^0.1.4
   syncfusion_flutter_charts: ^19.2.48
   firebase_core: ^1.4.0
+  firebase_auth: ^3.0.1
+  loading_overlay: ^0.3.0
+  cloud_firestore: ^2.4.0
+  recase: ^4.0.0
+  phone_number: ^0.11.0+2
+  firebase_storage: ^10.0.1
 
 dev_dependencies:
   flutter_test:

@@ -4,8 +4,11 @@ class LoginForm extends FormGroup {
   LoginForm()
       : super(
           {
-            emailControlName: FormControl(),
-            passwordControlName: FormControl(),
+            emailControlName: FormControl(validators: [
+              Validators.required,
+              Validators.email,
+            ]),
+            passwordControlName: FormControl(validators: [Validators.required]),
           },
         );
 

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:recase/recase.dart';
 import 'package:vptrics/modules/core/enums/gender.enum.dart';
+import 'package:vptrics/modules/patients/models/patient.model.dart';
 import 'package:vptrics/modules/patients/widgets/stateful/create_patient_screen.dart';
 import 'package:vptrics/styles/app_icons.dart';
 import 'dart:math' as math;
@@ -14,6 +16,7 @@ class PatientsDialog {
 
   static Future<dynamic> showPatientInfo(
     BuildContext context,
+    Patient patient,
   ) {
     return showDialog<bool>(
       context: context,
@@ -31,9 +34,7 @@ class PatientsDialog {
                     child: Center(
                       child: CircleAvatar(
                         radius: 56,
-                        backgroundImage: AssetImage(
-                          "assets/images/default_passport.jpg",
-                        ),
+                        backgroundImage: NetworkImage(patient.photo),
                       ),
                     ),
                   ),
@@ -69,7 +70,7 @@ class PatientsDialog {
                     height: 4,
                   ),
                   Text(
-                    "ThankGod",
+                    ReCase(patient.firstname).titleCase,
                     style: Theme.of(context).textTheme.subtitle1,
                   ),
                   SizedBox(
@@ -81,7 +82,7 @@ class PatientsDialog {
                     height: 4,
                   ),
                   Text(
-                    "Okwute",
+                    ReCase(patient.lastname).titleCase,
                     style: Theme.of(context).textTheme.subtitle1,
                   ),
                   SizedBox(
@@ -108,7 +109,7 @@ class PatientsDialog {
                     height: 4,
                   ),
                   Text(
-                    genderLabel(Gender.male),
+                    patient.genderLabel ?? "",
                     style: Theme.of(context).textTheme.subtitle1,
                   ),
                   SizedBox(
@@ -134,7 +135,7 @@ class PatientsDialog {
                     height: 4,
                   ),
                   Text(
-                    "okwute@gmail.com",
+                    patient.email.toLowerCase(),
                     style: Theme.of(context).textTheme.subtitle1,
                   ),
                   SizedBox(
@@ -146,7 +147,7 @@ class PatientsDialog {
                     height: 4,
                   ),
                   Text(
-                    "FULafia",
+                    ReCase(patient.address).sentenceCase,
                     style: Theme.of(context).textTheme.subtitle1,
                   ),
                   SizedBox(
@@ -165,6 +166,7 @@ class PatientsDialog {
                   Navigator.popAndPushNamed(
                     context,
                     CreatePatientScreen.route,
+                    arguments: CreatePatientScreenData(patient: patient),
                   );
                 },
                 child: Text(

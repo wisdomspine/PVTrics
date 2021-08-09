@@ -12,6 +12,7 @@ class AppIcons {
   static const IconData camera = CupertinoIcons.camera;
   static const IconData calendar = CupertinoIcons.calendar;
   static const IconData attach = Icons.attach_file_outlined;
+  static const IconData detach = Icons.link_off;
   static const IconData cancel = Icons.cancel;
   static const IconData bar_chart = Icons.bar_chart;
   static const IconData send = Icons.send;

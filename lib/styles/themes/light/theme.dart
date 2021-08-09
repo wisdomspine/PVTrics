@@ -55,6 +55,19 @@ class LightThene {
           color: themeData.dividerColor.withOpacity(.15),
         ),
       ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: BorderSide(
+          color: themeData.errorColor.withOpacity(.8),
+        ),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: BorderSide(
+          color: themeData.errorColor.withOpacity(.8),
+          width: 2,
+        ),
+      ),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
         borderSide: BorderSide(

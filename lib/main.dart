@@ -3,6 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:get_it_mixin/get_it_mixin.dart';
 import 'package:vptrics/app_route.dart';
 import 'package:vptrics/loader.dart';
+import 'package:vptrics/shared_widgets/stateless/app_launch_scree.dart';
+import 'package:vptrics/shared_widgets/stateless/loading_screen.dart';
+import 'package:vptrics/shared_widgets/stateless/scaffold_background.dart';
 import 'package:vptrics/styles/styles.dart';
 import 'package:vptrics/styles/widgets/app_input_decoration.dart';
 import './styles/themes/light/theme.dart' as light_theme;
@@ -32,15 +35,32 @@ class MyApp extends StatelessWidget with GetItMixin {
   Widget build(BuildContext context) {
     final ThemeData themeData = light_theme.LightThene.theme(context);
 
-    final appRoute = get<AppRoute>();
     return MaterialApp(
       title: 'PVTrics',
       theme: themeData.copyWith(
         textTheme: typography.Typography.textTheme(themeData),
         inputDecorationTheme: AppInputDecoration.theme(themeData),
       ),
-      initialRoute: appRoute.initialRoute,
-      onGenerateRoute: appRoute.onGenerateRoute,
+      initialRoute: AppLaunchScreen.route,
+      onGenerateRoute: get<AppRoute>().onGenerateRoute,
     );
+    // if (hasInitialRoute && allIsReady) {
+
+    // } else {
+    //   return MaterialApp(
+    //     key: notReadyKey,
+    //     title: 'PVTrics',
+    //     theme: themeData.copyWith(
+    //       textTheme: typography.Typography.textTheme(themeData),
+    //       inputDecorationTheme: AppInputDecoration.theme(themeData),
+    //     ),
+    //     home: ScaffoldBackground(
+    //       child: LoadingScreen(
+    //         child: Scaffold(),
+    //         loading: true,
+    //       ),
+    //     ),
+    //   );
+    // }
   }
 }
