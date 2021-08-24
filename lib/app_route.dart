@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:vptrics/modules/data/widgets/stateless/data_screen.dart';
+import 'package:vptrics/modules/data/widgets/stateful/data_screen.dart';
 import 'package:vptrics/modules/email/widgets/stateful/compose_email_screen.dart';
 import 'package:vptrics/modules/email/widgets/stateful/emails_screen.dart';
 import 'package:vptrics/modules/email/widgets/stateful/read_email_screen.dart';
@@ -112,7 +112,9 @@ class AppRoute {
         break;
       case DataScreen.route:
         builder = (context) => ScaffoldBackground(
-              child: DataScreen(),
+              child: DataScreen(
+                data: routeSettings.arguments as DataScreenData,
+              ),
             );
         break;
       case AppLaunchScreen.route:

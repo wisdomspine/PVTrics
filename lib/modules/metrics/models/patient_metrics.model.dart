@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class PatientMetrics {
-  final int pulse;
-  final int temp;
+  final double pulse;
+  final double temp;
   final DocumentReference? patientRef;
   final DateTime time;
   final bool read;
@@ -19,8 +19,8 @@ class PatientMetrics {
   });
 
   PatientMetrics copyWith({
-    int? pulse,
-    int? temp,
+    double? pulse,
+    double? temp,
     DocumentReference? patientRef,
     DateTime? time,
     bool? read,
@@ -49,8 +49,8 @@ class PatientMetrics {
 
   factory PatientMetrics.fromMap(Map<String, dynamic> map) {
     return PatientMetrics(
-      pulse: map['pulse'],
-      temp: map['temp'],
+      pulse: double.parse("${map['pulse']}"),
+      temp: double.parse("${map['temp']}"),
       patientRef: map['patientRef'],
       time: map['time'],
       read: map['read'],

@@ -5,7 +5,7 @@ import 'package:get_it_mixin/get_it_mixin.dart';
 import 'package:recase/recase.dart';
 
 import 'package:vptrics/modules/core/app_dialogs.dart';
-import 'package:vptrics/modules/data/widgets/stateless/data_screen.dart';
+import 'package:vptrics/modules/data/widgets/stateful/data_screen.dart';
 import 'package:vptrics/modules/devices/devices.service.dart';
 import 'package:vptrics/modules/devices/devices_dialogs.dart';
 import 'package:vptrics/modules/devices/models/device.model.dart';
@@ -135,6 +135,7 @@ class _PatientDashboardScreenState extends State<PatientDashboardScreen>
                         Navigator.pushNamed(
                           context,
                           DataScreen.route,
+                          arguments: DataScreenData(ref: widget.data.ref),
                         );
                       },
                       label: "Data",

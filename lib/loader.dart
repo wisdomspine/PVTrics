@@ -8,6 +8,7 @@ import 'package:vptrics/modules/core/services/app_info.service.dart';
 import 'package:vptrics/modules/core/services/app_secure_storage.service.dart';
 import 'package:vptrics/modules/devices/devices.service.dart';
 import 'package:vptrics/modules/metrics/metrics.service.dart';
+import 'package:vptrics/modules/notifications/notifications.service.dart';
 import 'package:vptrics/modules/patients/patients.service.dart';
 
 /// A static  class with an init method to load dependencies
@@ -40,6 +41,11 @@ class AppLoader {
     GetIt.I.registerSingletonWithDependencies<MetricsService>(
       () => new MetricsService(),
       dependsOn: [FirebaseFirestore],
+    );
+
+    GetIt.I.registerSingletonWithDependencies<MetricsNotificationService>(
+      () => new MetricsNotificationService(),
+      dependsOn: [PatientsService, MetricsService],
     );
     GetIt.I.registerSingleton(
       new AppInfoService(),

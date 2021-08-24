@@ -29,11 +29,23 @@ class MetricsService extends ChangeNotifier {
 
   List<PatientMetrics> get all => _metrices;
 
-  List<PatientMetrics> forPatient(DocumentReference reference) {
-    return this
-        .all
-        .where((metrics) => metrics.patientRef == reference)
-        .toList();
+  List<PatientMetrics> forPatient(
+    DocumentReference reference, {
+    Object? startDate,
+    Object? endDate,
+  }) {
+    return this.all.where((metrics) {
+      bool match = metrics.patientRef == reference;
+      if (startDate != null && startDate is DateTime) {
+        match = metrics.time.millisecondsSinceEpoch >=
+            startDate.millisecondsSinceEpoch;
+      }
+      if (endDate != null && endDate is DateTime) {
+        match = metrics.time.millisecondsSinceEpoch <=
+            endDate.millisecondsSinceEpoch;
+      }
+      return match;
+    }).toList();
   }
 
   PatientMetrics? getByRef(DocumentReference reference) {

@@ -1,133 +1,171 @@
+import 'dart:developer';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get_it/get_it.dart';
+import 'package:get_it_mixin/get_it_mixin.dart';
+import 'package:recase/recase.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+
+import 'package:vptrics/modules/auth/widgets/stateless/act_on_signout.dart';
 import 'package:vptrics/modules/data/enums/data_presentation_format.enum.dart'
     as data_format;
 import 'package:vptrics/modules/data/forms/data_filter.form.dart';
 import 'package:vptrics/modules/data/models/data_point.dart';
+import 'package:vptrics/modules/metrics/metrics.service.dart';
+import 'package:vptrics/modules/metrics/models/patient_metrics.model.dart';
+import 'package:vptrics/modules/patients/models/patient.model.dart';
+import 'package:vptrics/modules/patients/patients.service.dart';
+import 'package:vptrics/shared_widgets/stateless/not_found.dart';
+import 'package:vptrics/shared_widgets/stateless/page_centered_not_found.dart';
 import 'package:vptrics/styles/app_icons.dart';
 import 'package:vptrics/styles/styles.dart' as styles;
 import 'package:intl/intl.dart';
 
-class DataScreen extends StatefulWidget {
+class DataScreen extends StatefulWidget with GetItStatefulWidgetMixin {
   static const String route = "DataScreen";
-  const DataScreen({Key? key}) : super(key: key);
+  final DataScreenData data;
+  DataScreen({
+    Key? key,
+    required this.data,
+  }) : super(key: key);
 
   @override
   _DataScreenState createState() => _DataScreenState();
 }
 
-class _DataScreenState extends State<DataScreen> {
+class _DataScreenState extends State<DataScreen> with GetItStateMixin {
   final DataFilterForm _filterForm = new DataFilterForm();
   data_format.DataPresentationFormat _format =
       data_format.DataPresentationFormat.chart;
 
-  List<DataPoint> _temperatures = [];
-  List<DataPoint> _heartBeats = [];
-
   @override
   void initState() {
-    _initTempData();
     SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft]);
-
+    GetIt.I.pushNewScope();
+    GetIt.I.registerSingleton<DataFilterForm>(_filterForm);
     super.initState();
   }
 
   @override
   void dispose() {
+    GetIt.I.popScope();
     super.dispose();
-  }
-
-  _initTempData() {
-    _temperatures = _heartBeats = [
-      DataPoint(10, DateTime(2021, 7, 1)),
-      DataPoint(12, DateTime(2021, 7, 2)),
-      DataPoint(4, DateTime(2021, 7, 3)),
-      DataPoint(20, DateTime(2021, 7, 4)),
-      DataPoint(-30, DateTime(2021, 7, 5)),
-      DataPoint(35, DateTime(2021, 7, 6)),
-      DataPoint(30, DateTime(2021, 7, 7)),
-      DataPoint(40, DateTime(2021, 7, 8)),
-      DataPoint(25, DateTime(2021, 7, 9)),
-      DataPoint(50, DateTime(2021, 7, 10)),
-      DataPoint(35, DateTime(2021, 7, 11)),
-      DataPoint(30, DateTime(2021, 7, 12)),
-    ];
   }
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        await SystemChrome.setPreferredOrientations(
-            styles.preferredOrientations);
-        return true;
-      },
-      child: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text(
-            "Data: John Doe",
-          ),
-          actions: [
-            DropdownButton(
-              underline: SizedBox(),
-              dropdownColor: Theme.of(context).cardColor.withOpacity(.85),
-              elevation: 0,
-              value: _format,
-              onChanged: (data_format.DataPresentationFormat? newFormat) {
-                _format = newFormat ?? _format;
-                _updateData();
-              },
-              items: data_format.DataPresentationFormat.values
-                  .map(
-                    (format) => DropdownMenuItem(
-                      child: Text(
-                        data_format.formatLabel(format),
+    Map<String, Object?> formValue =
+        watchStream<DataFilterForm, Map<String, Object?>?>(
+                (form) => form.valueChanges, {}).data ??
+            {};
+    List<PatientMetrics> metrics =
+        watchOnly<MetricsService, List<PatientMetrics>>(
+            (service) => service.forPatient(
+                  widget.data.ref,
+                  startDate: formValue[DataFilterForm.startDateControlName],
+                  endDate: formValue[DataFilterForm.endDateControlName],
+                ));
+    Patient? patient = watchOnly<PatientsService, Patient?>(
+        (service) => service.getByRef(widget.data.ref));
+    return ActOnSignout(
+      child: WillPopScope(
+        onWillPop: () async {
+          await SystemChrome.setPreferredOrientations(
+              styles.preferredOrientations);
+          return true;
+        },
+        child: Scaffold(
+          appBar: AppBar(
+            centerTitle: true,
+            title: Text(
+              "Data: ${ReCase(patient?.name ?? 'Patient').titleCase}",
+            ),
+            actions: [
+              DropdownButton(
+                underline: SizedBox(),
+                dropdownColor: Theme.of(context).cardColor.withOpacity(.85),
+                elevation: 0,
+                value: _format,
+                onChanged: (data_format.DataPresentationFormat? newFormat) {
+                  _format = newFormat ?? _format;
+                  _updateData();
+                },
+                items: data_format.DataPresentationFormat.values
+                    .map(
+                      (format) => DropdownMenuItem(
+                        child: Text(
+                          data_format.formatLabel(format),
+                        ),
+                        value: format,
                       ),
-                      value: format,
-                    ),
-                  )
-                  .toList(),
-            ),
-            SizedBox(
-              width: 16,
-            ),
-            IconButton(
-              color: Theme.of(context).accentColor,
-              onPressed: () {
-                _pickRange(context);
-              },
-              icon: Icon(
-                AppIcons.calendar,
-              ),
-            ),
-          ],
-        ),
-        body: ListView(
-          padding: EdgeInsets.symmetric(
-            horizontal: 16,
-          ),
-          children: [
-            SizedBox(height: 16),
-            if (_format == data_format.DataPresentationFormat.chart)
-              ...charts(),
-            if (_format == data_format.DataPresentationFormat.table) ...[
-              generateTable(
-                _temperatures,
-                "Temperature",
-                (point) => "${point.value}°F",
+                    )
+                    .toList(),
               ),
               SizedBox(
-                height: 16,
+                width: 16,
               ),
-              generateTable(
-                _heartBeats,
-                "Pulse Rate",
-                (point) => "${point.value} bpm",
+              IconButton(
+                color: Theme.of(context).accentColor,
+                onPressed: () {
+                  _pickRange(context);
+                },
+                icon: Icon(
+                  AppIcons.calendar,
+                ),
               ),
             ],
-          ],
+          ),
+          body: SafeArea(
+            child: metrics.length > 0
+                ? ListView(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 16,
+                    ),
+                    children: [
+                      SizedBox(height: 16),
+                      if (_format == data_format.DataPresentationFormat.chart)
+                        ...charts(
+                          metrics
+                              .map((metric) =>
+                                  DataPoint(metric.temp, metric.time))
+                              .toList(),
+                          metrics
+                              .map((metric) =>
+                                  DataPoint(metric.pulse, metric.time))
+                              .toList(),
+                        ),
+                      if (_format ==
+                          data_format.DataPresentationFormat.table) ...[
+                        generateTable(
+                          metrics
+                              .map((metric) =>
+                                  DataPoint(metric.temp, metric.time))
+                              .toList(),
+                          "Temperature",
+                          (point) => "${point.value}°C",
+                        ),
+                        SizedBox(
+                          height: 16,
+                        ),
+                        generateTable(
+                          metrics
+                              .map((metric) =>
+                                  DataPoint(metric.pulse, metric.time))
+                              .toList(),
+                          "Pulse Rate",
+                          (point) => "${point.value} bpm",
+                        ),
+                      ],
+                    ],
+                  )
+                : PageCenteredNotFound(
+                    child: NotFound(
+                      title: "No data within the specified period",
+                    ),
+                  ),
+          ),
         ),
       ),
     );
@@ -137,10 +175,13 @@ class _DataScreenState extends State<DataScreen> {
     setState(() {});
   }
 
-  List<Widget> charts() {
+  List<Widget> charts(
+    List<DataPoint> temperatures,
+    List<DataPoint> pulses,
+  ) {
     final Map<String, List<DataPoint>> chartsData = {
-      "Temperature (°F)": _temperatures,
-      "Pulse rate (bpm)": _heartBeats,
+      "Temperature (°F)": temperatures,
+      "Pulse rate (bpm)": pulses,
     };
     List<Widget> response = [];
     chartsData.entries.forEach((entry) {
@@ -259,7 +300,7 @@ class _DataScreenState extends State<DataScreen> {
     showDateRangePicker(
       context: context,
       firstDate: DataFilterForm.minDate,
-      lastDate: end,
+      lastDate: DateTime.now(),
       initialDateRange: DateTimeRange(start: start, end: end),
       builder: (context2, child) => Theme(
         data: Theme.of(context).copyWith(
@@ -275,5 +316,19 @@ class _DataScreenState extends State<DataScreen> {
       };
       _updateData();
     });
+  }
+}
+
+class DataScreenData {
+  final DocumentReference ref;
+
+  DataScreenData({required this.ref});
+
+  DataScreenData copyWith({
+    DocumentReference? ref,
+  }) {
+    return DataScreenData(
+      ref: ref ?? this.ref,
+    );
   }
 }
