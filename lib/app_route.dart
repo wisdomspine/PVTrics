@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:vptrics/modules/data/widgets/stateful/data_screen.dart';
 import 'package:vptrics/modules/email/widgets/stateful/compose_email_screen.dart';
-import 'package:vptrics/modules/email/widgets/stateful/emails_screen.dart';
+import 'package:vptrics/modules/email/widgets/stateless/emails_screen.dart';
 import 'package:vptrics/modules/email/widgets/stateful/read_email_screen.dart';
 import 'package:vptrics/modules/notifications/widgets/stateful/notifications_screen.dart';
 import 'package:vptrics/modules/patients/widgets/stateful/create_patient_screen.dart';
@@ -82,17 +82,23 @@ class AppRoute {
         break;
       case EmailsScreen.route:
         builder = (context) => ScaffoldBackground(
-              child: EmailsScreen(),
+              child: EmailsScreen(
+                data: routeSettings.arguments as EmailsScreenData,
+              ),
             );
         break;
       case ComposeEmailScreen.route:
         builder = (context) => ScaffoldBackground(
-              child: ComposeEmailScreen(),
+              child: ComposeEmailScreen(
+                data: routeSettings.arguments as ComposeEmailScreenData,
+              ),
             );
         break;
       case ReadEmailScreen.route:
         builder = (context) => ScaffoldBackground(
-              child: ReadEmailScreen(),
+              child: ReadEmailScreen(
+                data: routeSettings.arguments as ReadEmailScreenData,
+              ),
             );
         break;
       case SmsScreen.route:

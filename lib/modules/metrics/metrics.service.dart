@@ -1,17 +1,25 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:vptrics/modules/metrics/models/patient_metrics.model.dart';
 
 class MetricsService extends ChangeNotifier {
   List<PatientMetrics> _metrices = [];
+  StreamSubscription? _subscription;
 
   MetricsService() {
     _init();
+    GetIt.I<FirebaseAuth>().userChanges().listen((event) {
+      _init();
+    });
   }
 
   _init() {
-    GetIt.I<FirebaseFirestore>()
+    _subscription?.cancel();
+    _subscription = GetIt.I<FirebaseFirestore>()
         .collection("metrics")
         .orderBy("time", descending: true)
         .snapshots()

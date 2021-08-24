@@ -8,6 +8,7 @@ import 'package:vptrics/modules/app-config/app-config.service.dart';
 import 'package:vptrics/modules/core/services/app_info.service.dart';
 import 'package:vptrics/modules/core/services/app_secure_storage.service.dart';
 import 'package:vptrics/modules/devices/devices.service.dart';
+import 'package:vptrics/modules/email/email.service.dart';
 import 'package:vptrics/modules/metrics/metrics.service.dart';
 import 'package:vptrics/modules/notifications/notifications.service.dart';
 import 'package:vptrics/modules/patients/patients.service.dart';
@@ -34,19 +35,19 @@ class AppLoader {
     GetIt.I.registerSingleton(AppSecureStorageService());
     GetIt.I.registerSingletonWithDependencies<DevicesService>(
       () => DevicesService(),
-      dependsOn: [FirebaseFirestore],
+      dependsOn: [FirebaseFirestore, FirebaseAuth],
     );
     GetIt.I.registerSingletonWithDependencies<PatientsService>(
       () => PatientsService(),
-      dependsOn: [FirebaseFirestore],
+      dependsOn: [FirebaseFirestore, FirebaseAuth],
     );
     GetIt.I.registerSingletonWithDependencies<AppConfigService>(
       () => AppConfigService(),
-      dependsOn: [FirebaseFirestore],
+      dependsOn: [FirebaseFirestore, FirebaseAuth],
     );
     GetIt.I.registerSingletonWithDependencies<MetricsService>(
       () => MetricsService(),
-      dependsOn: [FirebaseFirestore],
+      dependsOn: [FirebaseFirestore, FirebaseAuth],
     );
 
     GetIt.I.registerSingletonWithDependencies<MetricsNotificationService>(
@@ -56,7 +57,12 @@ class AppLoader {
 
     GetIt.I.registerSingletonWithDependencies<SmsService>(
       () => SmsService(),
-      dependsOn: [FirebaseFirestore, AppConfigService],
+      dependsOn: [FirebaseFirestore, AppConfigService, FirebaseAuth],
+    );
+
+    GetIt.I.registerSingletonWithDependencies<EmailService>(
+      () => EmailService(),
+      dependsOn: [FirebaseFirestore, AppConfigService, FirebaseAuth],
     );
     GetIt.I.registerSingleton(
       AppInfoService(),

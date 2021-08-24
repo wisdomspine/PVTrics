@@ -1,6 +1,8 @@
+import 'dart:async';
 import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -8,13 +10,18 @@ import 'package:vptrics/modules/patients/models/patient.model.dart';
 
 class PatientsService extends ChangeNotifier {
   List<Patient> _patients = [];
+  StreamSubscription? _subscription;
 
   PatientsService() {
     _init();
+    GetIt.I<FirebaseAuth>().userChanges().listen((event) {
+      _init();
+    });
   }
 
   _init() {
-    GetIt.I<FirebaseFirestore>()
+    _subscription?.cancel();
+    _subscription = GetIt.I<FirebaseFirestore>()
         .collection("patients")
         .snapshots()
         .listen((querySnapshot) {

@@ -9,7 +9,7 @@ import 'package:vptrics/modules/data/widgets/stateful/data_screen.dart';
 import 'package:vptrics/modules/devices/devices.service.dart';
 import 'package:vptrics/modules/devices/devices_dialogs.dart';
 import 'package:vptrics/modules/devices/models/device.model.dart';
-import 'package:vptrics/modules/email/widgets/stateful/emails_screen.dart';
+import 'package:vptrics/modules/email/widgets/stateless/emails_screen.dart';
 import 'package:vptrics/modules/notifications/services/snackbar.service.dart';
 import 'package:vptrics/modules/patients/models/patient.model.dart';
 import 'package:vptrics/modules/patients/patients.service.dart';
@@ -73,7 +73,11 @@ class _PatientDashboardScreenState extends State<PatientDashboardScreen>
                     child: PatientDashboardTab(
                       icon: Icon(AppIcons.at),
                       onPressed: () {
-                        Navigator.pushNamed(context, EmailsScreen.route);
+                        Navigator.pushNamed(
+                          context,
+                          EmailsScreen.route,
+                          arguments: EmailsScreenData(ref: widget.data.ref),
+                        );
                       },
                       label: "Emails",
                     ),

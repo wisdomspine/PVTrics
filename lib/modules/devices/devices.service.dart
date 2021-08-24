@@ -1,16 +1,24 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:vptrics/modules/devices/models/device.model.dart';
 
 class DevicesService extends ChangeNotifier {
   List<Device> _devices = [];
+  StreamSubscription? _subscription;
   DevicesService() {
     _init();
+    GetIt.I<FirebaseAuth>().userChanges().listen((event) {
+      _init();
+    });
   }
 
   _init() {
-    GetIt.I<FirebaseFirestore>()
+    _subscription?.cancel();
+    _subscription = GetIt.I<FirebaseFirestore>()
         .collection("devices")
         .snapshots()
         .listen((snapshot) {
