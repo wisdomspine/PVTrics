@@ -88,6 +88,7 @@ class _PatientDashboardScreenState extends State<PatientDashboardScreen>
                         Navigator.pushNamed(
                           context,
                           SmsScreen.route,
+                          arguments: SmsScreenData(ref: widget.data.ref),
                         );
                       },
                       label: "Sms",

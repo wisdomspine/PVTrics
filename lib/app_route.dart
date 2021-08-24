@@ -97,7 +97,9 @@ class AppRoute {
         break;
       case SmsScreen.route:
         builder = (context) => ScaffoldBackground(
-              child: SmsScreen(),
+              child: SmsScreen(
+                data: routeSettings.arguments as SmsScreenData,
+              ),
             );
         break;
       case SettingsScreen.route:

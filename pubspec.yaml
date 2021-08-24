@@ -38,6 +38,7 @@ dependencies:
   firebase_storage: ^10.0.1
   intl: ^0.17.0
   jiffy: ^4.1.0
+  mailer: ^5.0.2
 
 dev_dependencies:
   flutter_test:
