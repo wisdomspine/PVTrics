@@ -180,7 +180,7 @@ class _DataScreenState extends State<DataScreen> with GetItStateMixin {
     List<DataPoint> pulses,
   ) {
     final Map<String, List<DataPoint>> chartsData = {
-      "Temperature (°F)": temperatures,
+      "Temperature (°C)": temperatures,
       "Pulse rate (bpm)": pulses,
     };
     List<Widget> response = [];
