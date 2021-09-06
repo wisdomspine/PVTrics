@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -334,11 +336,11 @@ class _CreatePatientScreenState extends State<CreatePatientScreen> {
       _processing = true;
     });
     try {
-      XFile? file =
-          _form.controls[PatientForm.photoControlName]?.value as XFile;
+      dynamic value = _form.controls[PatientForm.photoControlName]?.value;
+      XFile? file = (value is XFile) ? value : null;
       final ref = await GetIt.I<PatientsService>().writePatient(
-        patient: _form.asPatient,
-        photo: await file.readAsBytes(),
+        patient: _form.asPatient.copyWith(ref: widget.data?.patient?.ref),
+        photo: await file?.readAsBytes(),
       );
 
       SnackbarService.showText(
@@ -354,6 +356,7 @@ class _CreatePatientScreenState extends State<CreatePatientScreen> {
         arguments: PatientDashboardScreenData(ref: ref),
       );
     } catch (e) {
+      log("$e");
       _processing = false;
       setState(() {});
       String message = widget.data?.patient != null

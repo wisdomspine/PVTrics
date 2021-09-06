@@ -4,8 +4,6 @@ import 'package:get_it_mixin/get_it_mixin.dart';
 import 'package:vptrics/app_route.dart';
 import 'package:vptrics/loader.dart';
 import 'package:vptrics/shared_widgets/stateless/app_launch_scree.dart';
-import 'package:vptrics/shared_widgets/stateless/loading_screen.dart';
-import 'package:vptrics/shared_widgets/stateless/scaffold_background.dart';
 import 'package:vptrics/styles/styles.dart';
 import 'package:vptrics/styles/widgets/app_input_decoration.dart';
 import './styles/themes/light/theme.dart' as light_theme;

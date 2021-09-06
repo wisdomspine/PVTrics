@@ -162,7 +162,6 @@ class PatientsDialog {
               ),
               child: ElevatedButton(
                 onPressed: () {
-                  // TODO: Create Patient
                   Navigator.popAndPushNamed(
                     context,
                     CreatePatientScreen.route,
