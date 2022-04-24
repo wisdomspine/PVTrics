@@ -1,16 +1,33 @@
-# vptrics
+# VPTrics
 
-A new Flutter project.
+VPTrics is short for Patient Vital  Metrics, A remote patient monitoring system where authorized doctors can monitor the Temperature, Pulse, and other patients' data in real-time from the Android or iOS application.  Doctors can also send emails and SMS to patients using the mobile application.
 
-## Getting Started
+## Environment
+## Setting up
+* **fvm @ latest**
+* **Flutter @ 2.0.3**
+* **Dart @2.12.2**
 
-This project is a starting point for a Flutter application.
+Clone the project to your computer and run `flutter pub get` **Ensure that fvm is globally installed on your computer**
+Check [how to install fvm](https://fvm.app/docs/getting_started/installation) if you don't have it configured on your computer.
 
-A few resources to get you started if this is your first Flutter project:
+## Development build
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Connect an emulator and run `fvm flutter run` 
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## Snapshots of the app in action
+
+### Onboarding Page
+![Onboarding Page](./readme_files/welcome.png "Onboarding Page")
+### Login Page
+![Login Page](./readme_files/login.png "Login Page")
+
+### Graph of patient data
+![Graph of patient data](./readme_files/graph.png "Graph of patient data")
+
+### Table of patient data
+![Table of patient data](./readme_files/table.png "Table of patient data")
+
+### Patient dashboard
+![Patient dashboard](./readme_files/patient.png "Patient dashboard")
